@@ -1,27 +1,23 @@
 const Input = ({
-  name,
   value,
-  placeholder,
   onChange,
   onBlur,
+  placeholder,
   type = "text",
   error,
-}) => {
-  return (
-    <div className="form-group">
-      <input
-        name={name}
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        onBlur={onBlur}
-        className={`input ${error ? "input-error" : ""}`}
-      />
+}) => (
+  <div className="field">
+    <input
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      onBlur={onBlur}
+      placeholder={placeholder}
+      type={type}
+      className={error ? "input error" : "input"}
+    />
 
-      {error && <span className="error-message">{error}</span>}
-    </div>
-  );
-};
+    {error && <p className="error-text">{error}</p>}
+  </div>
+);
 
 export default Input;
