@@ -5,6 +5,7 @@
 
  --bg: #f8f9fa;
  --white: #ffffff;
+ --bg-dark: #121212;
 
  --border: #e5e7eb;
 
@@ -56,6 +57,16 @@ body {
 
  margin: 0 auto;
  padding: var(--space-5);
+}
+
+.wrapper.light {
+ background-color: var(--white);
+ min-height: 100vh;
+}
+
+.wrapper.dark {
+ background-color: var(--bg-dark);
+ min-height: 100vh;
 }
 
 .card {
@@ -218,5 +229,10 @@ ul {
 }
 
 .button-icon {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 6px 8px;
+
  cursor: pointer;
 }
