@@ -32,14 +32,10 @@ export const TodoProvider =({ children })=> {
   };
 
   const filteredTodos = todos.filter((task) => {
-    switch (filter) {
-      case "active":
-        return !task.done;
-      case "done":
-        return task.done;
-      default:
-        return true;
-    }
+    if (filter === 'active') return !task.done;
+    if (filter === 'done') return task.done;
+    
+    return true;
   });
 
   const contextValue = {
