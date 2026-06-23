@@ -1,13 +1,15 @@
 import { useTodoContext } from "../../hooks/useTodoContext";
 
 const ActiveTasksCounter = () => {
-  const { filteredTodos } = useTodoContext();
+  const { todos } = useTodoContext();
 
-  const activeTasksCount = filteredTodos.filter((task) => !task.done).length;
+  const activeTasksCount = todos.filter(
+    (task) => !task.done
+  ).length;
 
   return (
     <span>
-      Active Tasks: {activeTasksCount || "No tasks yet"}
+      Active Tasks Left: {activeTasksCount}
     </span>
   );
 };

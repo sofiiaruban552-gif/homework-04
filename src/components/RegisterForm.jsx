@@ -4,16 +4,35 @@ import Input from "./shared/Input";
 import Button from "./shared/Button";
 import { validateForm } from "../helpers/validation";
 
+const EMPTY_FORM = {
+  name: "",
+  email: "",
+  password: "",
+};
+
+const ALL_TOUCHED = {
+  name: true,
+  email: true,
+  password: true,
+};
+
 const RegisterForm = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [form, setForm] = useState(EMPTY_FORM);
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [success, setSuccess] = useState("");
+
+  const runValidation = () => {
+    const validationErrors = validateForm(form);
+    setErrors(validationErrors);
+    
+    return validationErrors;
+  };
+
+  const hasErrors = (errors) => Object.keys(errors).length > 0;
+
+  const isFormValid = !hasErrors(validateForm(form));
 
   const handleChange = (field) => (value) => {
     setForm((prev) => ({
@@ -27,30 +46,26 @@ const RegisterForm = () => {
       ...prev,
       [field]: true,
     }));
-    setErrors(validateForm(form));
+
+    runValidation();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = (e) => {
+  e.preventDefault();
 
-    const validation = validateForm(form);
-    setErrors(validation);
+  const validationErrors = runValidation();
 
-    if (Object.keys(validation).length === 0) {
-      setSuccess("Готово ✅");
+  if (hasErrors(validationErrors)) {
+    setTouched(ALL_TOUCHED);
+    setSuccess("");
+    return;
+  }
 
-      setForm({
-        name: "",
-        email: "",
-        password: "",
-      });
-
-      setTouched({});
-    } else {
-      setSuccess("");
-    }
-  };
-  const isFormValid = Object.keys(errors).length === 0;
+  setSuccess("Готово ✅");
+  setForm(EMPTY_FORM);
+  setTouched({});
+  setErrors({});
+};
 
   return (
     <SectionCard>

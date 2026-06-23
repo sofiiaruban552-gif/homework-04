@@ -136,6 +136,11 @@ body {
  opacity: 0.7;
 }
 
+.error-text {
+ color: var(--error);
+ font-size: 0.8rem;
+}
+
 .button {
  display: inline-flex;
  align-items: center;
