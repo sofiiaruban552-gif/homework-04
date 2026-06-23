@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 const Button = ({
   label,
   onClick,
@@ -9,7 +11,7 @@ const Button = ({
     type={type}
     onClick={onClick}
     disabled={disabled}
-    className={`button ${className}`}
+    className={clsx('button', className)}
   >
     {label}
   </button>
