@@ -2,17 +2,12 @@ import SectionCard from "../shared/SectionCard";
 import TaskInput from "./TaskInput";
 import TaskFilter from "./TaskFilter";
 import TaskList from "./TaskList";
-import TasksCounter from "./TasksCounter";
+import ActiveTasksCounter from "./ActiveTasksCounter";
 
 const ToDoList = () => {
   const TASK_HEADINGS = {
     title: "To-Do List",
-    subtitle: "Classic task manager app",
-    labels: {
-      tasks: "Tasks:",
-      noActiveTasks: "No tasks",
-      noTasks: "No tasks yet",
-    },
+    subtitle: "Classic task manager app"
   };
 
   return (
@@ -22,7 +17,7 @@ const ToDoList = () => {
       <TaskInput />
       <TaskFilter />
       <TaskList />
-      <TasksCounter />
+      <ActiveTasksCounter />
     </SectionCard>
   );
 };

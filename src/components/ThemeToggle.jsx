@@ -5,10 +5,12 @@ import { useThemeContext } from "../hooks/useThemeContext";
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useThemeContext();
 
+   const isLight = theme === "light";
+
   return (
     <ButtonIcon
       onClick={toggleTheme}
-      icon={theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+      icon={isLight ? <Moon size={20} /> : <Sun size={20} />}
     />
   );
 };
