@@ -74,7 +74,7 @@ const RegisterForm = () => {
         Registration Form with Input Validation
       </h3>
 
-      {success && <p className="success">{success}</p>}
+      {success && <p>{success}</p>}
 
       <form onSubmit={handleSubmit} className="form">
         <Input
